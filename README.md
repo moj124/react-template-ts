@@ -26,3 +26,7 @@ If you would prefer a JavaScript template, please close the repository [here](ht
 
 ### Env
  I've added a env file to manage information regarding fetching within the env to store at constants. I would in practice remove the .env from github in practice.
+
+ ### TODO
+    add table data dynamically Table component
+    filter data in APP component
