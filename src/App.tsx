@@ -1,13 +1,32 @@
+import { useEffect, useState } from "react";
+import useFetchData from "./hooks/useFetchData";
+import Expense from "./types/Expenses";
+import Table from "./components/Table";
+
 function App() {
+  //save filtered data as use state
+  const [expenses, setExpenses] = useState<Expense[]>([]);
+
+  // fetch reponse
+  const endpoint = 'expenses';
+  const responseData = useFetchData(endpoint);
+  
+  // update state
+  useEffect (() => {
+    if(responseData.response) {
+      // TODO filter to a specifc object type 
+      console.log('responseData.response', responseData.response)
+      return setExpenses(responseData.response);
+    }
+    
+  }, [responseData.response]);
+  
+  console.log(expenses)
   return (
-    <div id="template-text">
-      <h1>React Starter Template - TypeScript</h1>
-      <p>
-        For JavaScript please use{" "}
-        <a href="https://github.com/ruairidhflint/react-template">this</a>{" "}
-        template
-      </p>
-    </div>
+    <>
+      <h1>Expenses</h1>
+      <Table list={expenses} />
+    </>
   );
 }
 
